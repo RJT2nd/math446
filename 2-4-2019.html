@@ -1,0 +1,99 @@
+<html>
+<head>
+  <title>MATH446 2-4-2019</title>
+</head>
+<body>
+  <h1>MATH464 2-4-2019 Notes</h1>
+  <h4><u>Theorem</u></h4>
+  <p>
+    Assume that g is continuously differentiable, that g(r) = r, and that S = |g'(r)| < 1.<br>
+    Then the fixed point iteration converges linearly with rate S to the fixed point r for intial guesses sufficiently close to r<br>
+    <b>ei+1 = S ei</b>
+  </p>
+  <h4><u>Example</u></h4>
+  <p>
+    g3(x) = (1+2x^3)/(1+3x^2) root r approx= 0.6823<br>
+    g'3(x) = (6x^2(1+3x^2) - (1+2x^3)6x) / (1+3x^2)^2<br>
+    g'3(0.6823) = 0<br>
+    S3 = 0<br>
+    FPI converges immediately
+  </p>
+  <p>
+    g2(x) = (1 - x)^(1/3)<br>
+    g'2(x) = -1/3 (1 - x)^(-2/3)<br>
+    |g'2(x)| approx= 0.716 S2 = 0.716<br>
+    FPI will converge slowly
+  </p>
+  <p>
+    g1(x) = 1-x^3<br>
+    g'1(x) = -3x^2<br>
+    |g'1(0.6823)| = 1.3966<br>
+    S1 = 1.3966<br>
+    FPI will not converge
+  </p>
+  <div>
+    <h4><u>Definition</u></h4>
+    <p>
+      An iterative method is called <u>locally convergent</u> to r if the method converges to r for initiall guesses sufficiently close to r.<br>
+      ie, if there exists a neighborhood (r-epsilon, r+epsilon), epsilon > 0, such that convergence to r follows from all initial guesses from that neighborhood.
+    </p>
+    <h4><u>Example</u> Bisection Method</h4>
+    <p>
+      f(x) = x<sup>2</sup>-2         r<sub>1</sub> = -2<sup>1/2</sup>         r<sub>2</sub> = 2<sup>1/2</sup><br>
+      Consider r<sub>2</sub> = 2<sup>1/2</sup>
+      [a,b] = [0,2], [1,2], [-1,5], [-1,100]
+    </p>
+    <h4><u>Example 1.3</u></h4>
+    <p>
+      Explain why the fixed point iteration converges for g(x) = cos(x)<br>
+      r = 0.74<br>
+      g'(x) = -sin(x)<br>
+      |g'(0.74)| = |-sin(.74)| = 0.67<br>
+      0.67 < 1 => FPI converges
+    </p>
+  </div>
+  <div>
+    <h4><u>Stopping Criteria</u></h4>
+    <p>
+      <u>Option 1:</u> set the number of iteration (k<sub>max</sub>)<br>
+      <u>Option 2:</u> Limit your error<br>
+      a) Absolute error: |x<sub>i+1</sub> - x<sub>i</sub>| < TOL<br>
+      b) Relative error: |x<sub>i+1</sub> - x<sub>i</sub>|/|x<sub>i+1</sub>| < TOL
+    </p>
+  </div>
+  <div>
+    <h4><u>Chapter 0</u><br>
+    <u>0.1</u> Evaluating Polynomials</h4>
+    <p>
+      <u>Objective:</u> Evaluate a polynomial at a certain number with the least number of operations
+    </p>
+    <h4><u>Example</u></h4>
+    <p>
+      P(x) = 2x<sup>4</sup> + 3x<sup>3</sup> - 3x<sup>2</sup> + 5x - 1<br>
+      Evaluate P(x) at x = 1/2.
+    </p>
+    <h4>Method 1</h4>
+    <p>
+      P(1/2) = 2 * 1/2 * 1/2 * 1/2 * 1/2 + 3 * 1/2 * 1/2 * 1/2...<br>
+      10 multiplications and 4 additions
+    </p>
+    <h4>Method 2</h4>
+    <p>
+      Find the powers and store them<br>
+      P(1/2) = 2 * (1/2)<sup>4</sup> + ...<br>
+      1/2 * 1/2 = (1/2)<sup>2</sup><br>
+      (1/2)<sup>2</sup> * 1/2 = (1/2)<sup>3</sup>...<br>
+      7 multiplications and 4 additions
+    </p>
+    <h4>Method 3</h4>
+    <p>
+      Nested Multiplications (inside out)<br>
+      P(x) = -1 + 5x - 3x<sup>2</sup> + 3x<sup>3</sup> + 2x<sup>4</sup><br>
+      = -1 + x( 5 - 3x + 3x<sup>2</sup> + 2x<sup>3</sup>)<br>
+      = -1 + x( 5 - x( 3 + 3x + 2x<sup>2</sup>))<br>
+      = -1 + x( 5 - x( 3 + x( 3 + 2x )))<br>
+      4 multiplications and 4 additions
+    </p>
+  </div>
+</body>
+</html>
